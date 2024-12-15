@@ -1,0 +1,5 @@
+Flask==2.2.5
+Flask-Cors==5.0.0
+flask-mongoengine==1.0.0
+Flask-PyMongo==2.3.0
+neo4j==5.27.0
