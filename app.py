@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from neo4j import GraphDatabase
 from collections import defaultdict
 # AuraDB connection details
@@ -279,6 +280,8 @@ class GraphApp:
 
 # Initialize Flask app and GraphApp instance
 app = Flask(__name__)
+CORS(app) 
+port=5000
 graph_app = GraphApp(URI, USERNAME, PASSWORD)
 
 
@@ -412,8 +415,5 @@ def health_check():
     """
     return jsonify({"status": "API is running."})
 
-if __name__ == "__main__":
-    try:
-        app.run(debug=True, port=5000)
-    finally:
-        graph_app.close()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=port, debug=True)
